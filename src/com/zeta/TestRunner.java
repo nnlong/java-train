@@ -104,4 +104,12 @@ public class TestRunner {
             throw new RuntimeException(e);
         }
     }
+
+    public static void runTests(Class testClass, String toAddr, String password) {
+        TestRunner testRunner = new TestRunner(testClass);
+        testRunner.execute();
+
+        System.out.println(testRunner.getTestResultText());
+        testRunner.sendTestResultByMail(toAddr, password);
+    }
 }

@@ -9,17 +9,14 @@ import com.zeta.TestRunner;
  */
 public class Tester {
     public static void main(String[] args) {
-        TestRunner testRunner = new TestRunner(Tester.class);
-        testRunner.execute();
         String[] params = new String[] {"", ""};
         for (int i = 0; i < args.length; i++) {
-            if (i >= params.length) {
+            if (i >= params.length)
                 break;
-            }
+
             params[i] = args[i];
         }
-        System.out.println(testRunner.getTestResultText());
-        testRunner.sendTestResultByMail(params[0], params[1]);
+        TestRunner.runTests(Tester.class, args[0], args[1]);
     }
 
     @Test
