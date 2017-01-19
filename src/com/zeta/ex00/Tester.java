@@ -9,14 +9,14 @@ import com.zeta.TestRunner;
  */
 public class Tester {
     public static void main(String[] args) {
-        String[] params = new String[] {"", ""};
+        String[] params = new String[] {"", "", ""};
         for (int i = 0; i < args.length; i++) {
             if (i >= params.length)
                 break;
 
             params[i] = args[i];
         }
-        TestRunner.runTests(Tester.class, args[0], args[1]);
+        TestRunner.runTests(Tester.class, params[0], params[1], params[2]);
     }
 
     @Test

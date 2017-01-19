@@ -62,7 +62,7 @@ public class TestRunner {
         }
     }
 
-    public void sendTestResultByMail(String toAddr, String password) {
+    public void sendTestResultByMail(String name, String toAddr, String password) {
         final String fromAddr = "kangyuzhe@zeta-inc.co.jp";
         final String userName = "kangyuzhe@zeta-inc.co.jp";
         final String host = "zeta-inc.co.jp";
@@ -96,7 +96,7 @@ public class TestRunner {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(fromAddr));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toAddr));
-            message.setSubject("测试结果");
+            message.setSubject(String.format("%s的本次测试结果", name));
             message.setText(getTestResultText());
             Transport.send(message);
             System.out.println("Sent message successfully....");
@@ -105,11 +105,15 @@ public class TestRunner {
         }
     }
 
-    public static void runTests(Class testClass, String toAddr, String password) {
+    public static void runTests(Class testClass, String name, String email, String password) {
         TestRunner testRunner = new TestRunner(testClass);
         testRunner.execute();
 
         System.out.println(testRunner.getTestResultText());
-        testRunner.sendTestResultByMail(toAddr, password);
+        if (email.isEmpty()) {
+            testRunner.saveTestResult(name + ".txt");
+        } else {
+            testRunner.sendTestResultByMail(name, email, password);
+        }
     }
 }
