@@ -63,7 +63,7 @@
 * 本地开发环境
     - [IntelliJ IDEA](https://www.jetbrains.com/idea)
     - [Google Chrome](https://www.google.com/chrome)
-    - [Astah Community](http://astah.net/editions/community)
+    - [StarUML](http://staruml.io/)
 * 练习环境
     - [Coding Ground](http://www.tutorialspoint.com/codingground.htm)
 * 代码版本管理
